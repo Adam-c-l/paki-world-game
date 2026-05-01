@@ -33,7 +33,7 @@ class DataHandler:
 		self.session_id = 0
 		self.dispatcher = None
 		self.console_buffer = []
-		self.port = 8200
+		self.port = 80
 		self.natport = self.port + 1
 		self.min_spring_version = '*'
 		
