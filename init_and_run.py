@@ -113,15 +113,15 @@ def main():
     
     print("\n" + "=" * 60)
     print("Starting Lobby Server...")
-    print("Port: 8200 (Lobby) | Port: 8201 (NAT)")
+    print("Port: 80 (Lobby) | Port: 81 (NAT)")
     print("=" * 60 + "\n")
     
     # Set up arguments for the server
     sys.argv = [
         'server.py',
         '-s', 'sqlite:///data/server.db',
-        '-p', '8200',
-        '-n', '8201'
+        '-p', '80',
+        '-n', '81'
     ]
     
     # Import and run the server

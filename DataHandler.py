@@ -279,11 +279,11 @@ class DataHandler:
 
 	def showhelp(self):
 		print('Usage: server.py [OPTIONS]...')
-		print('Starts uberserver.')
-		print('')
-		print('Options:')
-		print('  -h, --help')
-		print('      { Displays this screen then exits }')
+		print('Started lobby server!')
+		print('Connect the lobby client to')
+		print('  public:  %s:%d' %(_root.online_ip, 80))
+		print('  private: %s:%d' %(_root.local_ip, 80))
+		print('This screen then exits }')
 		print('  -p, --port number')
 		print('      { Server will host on this port (default is 8200) }')
 		print('  -n, --natport number')
