@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: recoil-lobby-server
+    runtime: docker
+    plan: starter
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    disk:
+      name: lobby-data
+      mountPath: /app/data
+      sizeGB: 1
+    ports:
+      - 8200
+      - 8201
