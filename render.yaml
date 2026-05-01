@@ -6,7 +6,3 @@ services:
     envVars:
       - key: PYTHONUNBUFFERED
         value: "1"
-    disk:
-      name: lobby-data
-      mountPath: /app/data
-      sizeGB: 1
