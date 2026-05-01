@@ -7,6 +7,7 @@ This makes deployment easier - just run this script on first boot.
 import os
 import sys
 import time
+import threading
 
 # Set up paths early
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -113,15 +114,22 @@ def main():
     
     print("\n" + "=" * 60)
     print("Starting Lobby Server...")
-    print("Port: 80 (Lobby) | Port: 81 (NAT)")
+    print("Port: 8200 (Lobby) | Port: 8201 (NAT)")
+    print("Port: 8080 (HTTP Health Check)")
     print("=" * 60 + "\n")
     
-    # Set up arguments for the server
+    # Start HTTP health check server in background thread
+    import health_check
+    health_thread = threading.Thread(target=health_check.start_http_server, daemon=True)
+    health_thread.start()
+    time.sleep(1)  # Let HTTP server start
+    
+    # Set up arguments for the server (use original lobby ports)
     sys.argv = [
         'server.py',
         '-s', 'sqlite:///data/server.db',
-        '-p', '80',
-        '-n', '81'
+        '-p', '8200',
+        '-n', '8201'
     ]
     
     # Import and run the server
